@@ -1,0 +1,14 @@
+fazer clone- > criar clone quando nao existir na maquina local
+se ja estiver use o comando pull que puxa o repositorio que ja esta
+alteração na maquina
+entao e isso camarada é nois
+so nao sei oqeu eu fiz aqui
+
+
+
+
+
+
+
+
+
