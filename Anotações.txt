@@ -1,8 +1,47 @@
 fazer clone- > criar clone quando nao existir na maquina local
 se ja estiver use o comando pull que puxa o repositorio que ja esta
 alteração na maquina
-entao e isso camarada é nois
-so nao sei oqeu eu fiz aqui
+operadores -> aritimeticos, relacionais , logicos, bit a bit .
+coleções -> listas [], tuplas (), dict {}, set()
+-------operacoes para resto é % 
+--------divisao inteira //
+------- exponenciação **
+os operadores aritimeticos sao operações binarias, significa que tem dois elementos.
+as operações sempre envolvem uma entrada de dados e uma saida de dados.
+
+operações reçacionais sao? 
+>(maior) , <(menor) . >= (maior igual), <=(menor igual) , != (diferente),
+tambem sao binarias ou seja sao dois numeros  e o resultado nao tem a mesma natureza que os elementos comparados
+ou seja o resultado sempre vai ser true ou false.
+ 
+ operadores logicos (tambem retornam true e false)
+ tem operacoes binarias e unarias.
+ operações binarias -> end / or 
+ operacoes unarias -> not
+
+operadores bit a bit
+
+~
+<<  
+>>
+&
+^
+|
+bit é a menor unidade de informação
+ja o Byte é a unidade basica(uma sequencia de 8 bitS)
+o valor maximo para representar valores em 8 bits é 256
+um objeto é representado por propriedades e metodos (acoes)
+no caso da programacao e um conjunto de variaveis pra representar a propriedades
+e metodos para representar ações
+todos os comandos em ulima instancia sao funcoes que representam metodos
+as variaveis e os metodos nao existem dde forma independente, elas existem pelo objeto.
+vocÇe nao cria variavel separada e sim estrutura no codigo que representa o modelo nde tem o conjunto de variacel e o de funcoes.
+objetos é um conjunto de propriedades (variaveis e um conjunto de metodos(funcoes))
+classe e o modelo de um objeto, nao e o objet , é o modelo.
+em python uma string e um tipo de objeto, se e um objeto ele tem propriedade e metodos.
+
+
+
 
 
 
