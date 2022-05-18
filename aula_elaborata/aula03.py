@@ -52,7 +52,7 @@ print(sMensagem)"""
 #as contra- barras serve para mostrar que a proxima aspas faz parte da string
 """csvProduto = "01; televisor 32\"; marca samsung; preço: 1200,00"
 print(csvProduto)
-print(csvProduto.split(";"))
+print(csvProduto.split(";")) # comando split serve para separar uma string em lista usando o marcador dentro dos parenteses como parametro
 lstProduto = csvProduto.split(";")
 print(lstProduto[1])
 print(";".join(lstProduto)) #metodo join concatena qualquer numero de strings"""
