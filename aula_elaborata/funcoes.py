@@ -3,6 +3,7 @@
 #em python existem 3 tipos de funções, as funções que fazem parte do python(build- int), ex: input
 #funções definidas pelo usuário(programador/desenvolvedor)
 #função lambda ou anonimas ()
+#continue volta para o inicio do laço
 """para criar uma função utilizamos a seguinte sintaxe
     começamos com a palavra def seguida do nome da função
     def nome_função():

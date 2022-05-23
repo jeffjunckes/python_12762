@@ -4,6 +4,7 @@
 for (item) in (colecao_de_itens):
     print(item) """
 #como criar uma lista \/
+#continue volta para o inicio do slaço
 
 from unittest.util import strclass
 num_str = "1"

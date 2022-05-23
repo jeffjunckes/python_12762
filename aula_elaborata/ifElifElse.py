@@ -7,6 +7,7 @@
 #if condição :
 #elif
 #lembrar de identação sempre
+#continue volta para o inicio do laço
 """if(condição):
         comando1
         comando2
