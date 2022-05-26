@@ -1,0 +1,29 @@
+#temos uma relação cliente servidor.
+#cliente costuma ser o navegador.
+#servidor costuma ter duas maneiras de pensar, primeiro a maquina servidor que 
+#normalmente é uma estação de trabalho um pc mais robusto, normalmente sem uma 
+#interface grafica, pois consume muitos recursos das maquinas, 
+#nessa maquina você instala uma serie de programas que funcionam como servidores.
+#ou seja você tem a maquina servidor e tem um softwere servidor
+#no caso das app web a gente trabalha geralmente acessando um servidor web ou http
+#HTTP é o nome do servidor 
+#FTP  -> file transfer protocol(protocolo de tranferencia de arquivo)
+#apace é o servidor web mais usado hohe em dia , ele cria o WWW que é como se fosse uma
+#"pasta " no servidor onde você armazena os arquivos do seu site.
+#na hospedagens precisamos configurar o servidor pra maquina especifica.
+#a partir dessa condiguração eventualmente podemos configurar um dominio comprado.
+#em uma agencia de dominios.
+
+
+#NO AMMBIENTE DE DESENVOLVIMENTO
+#o servidor web e o navegadr estao na mesma maquina
+# para o navegador acessar o servidor, utilizamos um endereço IP que 
+#aponta para a propria maquna.
+# o mais comum, é o 127.0.0.1
+#quando temos um servidor na maquina instalado ele cria um servidor como se fosse um 
+#diretorio e podemos acessar ela pelo navegador.
+# o cherry py funciona para gente como sendo o servidor web. quando digitamos o ip 
+#vai mandar pro cherry py que processa e manda uma resposta pro navegador.
+#HTML DEFINE A ESTRUTURA DE UM DOCUMENTO (PAGINA WEB
+#JAVASCRIPT DEFINE AS FUNCIONALISADES DO DOCUMENTO WEB
+#CSS DEFINE A FORMATAÇÃO DO DOCUMENTO WEB.

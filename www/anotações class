@@ -1,0 +1,21 @@
+#a variavel é criada e destruida a todo momento, como variaveis soltas, nao tem nada
+#que vincule uma variavel a outra, sabemos do que se trata a variavel.
+#o mais perto de termos estruturas que relacionam variaveis sao os vetores.
+#so que os vetores sao limitados.
+#quando começamos a falar de programação orientada a objetos, englobamos tanto variaveis 
+#quanto funções e essa estrutura representa algum elemento mais complexo, vemos a estrutura
+#e podemos ter varias variaveis e varias funções que estao relacionados entre elas
+#como se tivesse na mesma capsula, elas so existem la dentro.
+#essas estruturas chamamos de objeto, uma estrutura que encorpora variavel e funções
+#as variaveis chamamos de atributos ou propriedades que representam como o objeto é ou está
+#o estado do objeto.
+#e os metodos sao representados por funções, que representam os processos que sao do escopo(inerente)
+#ao objeto, muitas vezes o objeto nao tem sentido se você tirar do escopo daquele objeto.
+#a CLASSE representa o modelo do objeto, é dentro dela que definimos as variaveis e os metodos.
+#entao criamos uma class(nome da classe):
+#dentro da classe(indentação) criamos variaveis e funções, da mesma forma que eu crio em um
+#programa normal
+#a CLASSE nao é um objeto a classe é o modelo do objeto
+#podemos pensar (inteiro é um tipo de dado, nao uma variavel), posso criar uma 
+#variavel do tipo inteiro, é um modelo de dado que representa o inteiro
+#a classe esta para objeto assim como o tipo esta pra variavel.

@@ -41,7 +41,7 @@ classe e o modelo de um objeto, nao e o objet , é o modelo.
 em python uma string e um tipo de objeto, se e um objeto ele tem propriedade e metodos.
 
 
-
+cherry py é um framework para aplicação web.
 
 
 
