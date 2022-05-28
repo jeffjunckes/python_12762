@@ -1,0 +1,3 @@
+Este arquivo é utilizado na aula  de python.
+Data de criação - 27/maio/2022
+curso de programação em python
