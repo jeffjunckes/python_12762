@@ -88,13 +88,13 @@ class AppWeb: #object não é um parametro.
                             <h5> abrindo um arquivo</h5>
                             <ol>
                                 <li> 
-                                " a função open [e utilizado para realizar operações com arquivos python
+                                " a função open é utilizado para realizar operações com arquivos python"
                                 </li>
                                 <li> 
-                                    um arquivo pode ser aberto para leitura (read), escreita(write) ou acrescentar(append) conteudo                            
+                                    "um arquivo pode ser aberto para leitura (read), escrita(write) ou acrescentar(append) conteudo"                          
                                 </li>
                                 <li> 
-                                    apos utilizado , um arquivo sempre deve ser fechado.
+                                    "apos utilizado , um arquivo sempre deve ser fechado."
                                 </li>
                             </ol>
                             <p>
@@ -125,7 +125,9 @@ class AppWeb: #object não é um parametro.
 
                             </ol>
                             <p> sintaxe da função <em>read</em></p>
-                           
+                            <pre>
+                                conteudo lido com a função read: %s 
+                            </pre>
                             
                         </div>
 
@@ -136,7 +138,7 @@ class AppWeb: #object não é um parametro.
 
     def lerArquivo_read(self):
         strConteudo = ""
-        arquivo = open("arquivos/arquivo_teste.txt", "r") 
+        arquivo = open("arquivos/teste_teste.txt", "r") 
         strConteudo = arquivo.read() #vai ler o que tem no arquivo e armazenar na variavel
         arquivo.close()#vai fechar o arquivo
 
