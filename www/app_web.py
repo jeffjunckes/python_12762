@@ -1,144 +1,66 @@
 import cherrypy
 import os
+import markdown
 #criando um modelo da app web.
 class AppWeb: #object não é um parametro.
+
+    sTituloDaPagina = ""
+    htmlMenuDeNavegacao = ""
+    htmlConteudo = ""
+
+
     @cherrypy.expose # permite que você acesse o metodo a partir de um navegador
     def index(self):#self faz referenca ao proprio objeto da classe(ele falando dele mesmo)
-        htmlNomeDaTrilha = "<h5>Inicio</h5>"
-        htmlMenuDeNavegacao = self.menuDeNavegacao()
-        return """"<!DOCTYPE html>
-        <html>
-            <head>
-                <title>Python 12762</title>
-                <style>
-                    p{
-                        color: darkred;
-                    }
-                    p{
-                        
-                        }
-                    #divMenuDeNavegacao{
-                        backgound-color:lightblue;
-                    }
-                    
-                </style>
-            </head>
-            <body>
-                <div id="divPrincipal">
-                    <div id= "divCabecalho">
-                
-                         <h4> trilhas de conhecimento </h4>
-                         <p>%s</p>
-                
-                    </div>
+       
+        self.htmlMenuDeNavegacao = self.menuDeNavegacao()
+        self.htmlConteudo = "<p>conteúdo</p>"
+        self.sTituloDaPagina = "Curso De Python - 12762"
+    
+        htmlCabecalhoDePagina = self.montarCabecalhoDePagina()
+        htmlCorpoDePagina = self.montarCorpoDePagina()
+        htmlRodapeDePagina = self.montarRodapeDePagina()
+        return self.montarPagina()
 
-              
-                    <div id="divMenuDeNavegacao">
-                        %s
-                    </div>
-                </div>
-            </body>
-        </html>"""%(htmlNomeDaTrilha, htmlMenuDeNavegacao)
+
+    def montarPagina(self):
+        htmlCabecalhoDePagina = self.montarCabecalhoDePagina()
+        htmlCorpoDePagina = self.montarCorpoDePagina()
+        htmlRodapeDePagina = self.montarRodapeDePagina()
+        return"""
+        %s
+        %s
+        %s
+        
+        
+        """% (htmlCabecalhoDePagina, htmlCorpoDePagina, htmlRodapeDePagina)
 
     @cherrypy.expose
     def trilhasDeConhecimento(self):
-        return """
-                <h3> Trilhas de conhecimento </h3>
-        """
+        self.htmlMenuDeNavegacao = self.menuDeNavegacao()
+        self.htmlConteudo = "<p>conteúdo</p>"
+        self.sTituloDaPagina = "Curso De Python - trilhas de conhecimento"
+        return self.montarPagina()
 
     @cherrypy.expose
     def trilhaDePython(self):
-        htmlNomeDaTrilha = "<h5>Trilha de python</h5>"
-        htmlMenuDeNavegacao = self.menuDeNavegacao()
+     
         
-        strConteudoDoArquivo = self.lerArquivo_read()
-        return """
-<!DOCTYPE html>
-        <html>
-            <head>
-                <title>Python 12762</title>
-                <style>
-                    p{
-                        color: darkred;
-                    }
-                    p{
-                        
-                        }
-                    #divMenuDeNavegacao{
-                        backgound-color:lightblue;
-                    }
-                    
-                </style>
-            </head>
-            <body>
-                <div id="divPrincipal">
-                    <div id= "divCabecalho">
-                
-                         <h4> trilhas de conhecimento </h4>
-                         %s
-                
-                    </div>
+        strConteudoDoArquivo = self.lerArquivo_read("arquivos/teste_teste.txt")
 
-              
-                    <div id="divMenuDeNavegacao">
-                        %s
-                    </div>,
+        htmlConteudoTrilhaDePython = self.lerArquivo_read("arquivos/trilha_de_python.html") % (strConteudoDoArquivo)
+
+
+        self.sTituloDaPagina = "curso de python - Trilhas de Python"
+        self.htmlMenuDeNavegacao = self.menuDeNavegacao()
+        self.htmlConteudo=  """
                     <div id="divTrilhaDePython"> 
-                        <div id="divArquivosEmPython"> 
-                            <h5> abrindo um arquivo</h5>
-                            <ol>
-                                <li> 
-                                " a função open é utilizado para realizar operações com arquivos python"
-                                </li>
-                                <li> 
-                                    "um arquivo pode ser aberto para leitura (read), escrita(write) ou acrescentar(append) conteudo"                          
-                                </li>
-                                <li> 
-                                    "apos utilizado , um arquivo sempre deve ser fechado."
-                                </li>
-                            </ol>
-                            <p>
-                                sintaxe da função open- modo leitura: 
-                            </p>
-                            <pre>
-                                arquivo = open("nomeDoArquivo.txt", "r")
-                                onde nomeDoArquivo.txt é o nome do arquivo que esta sendo aberto 
-                                e "r" indica que o arquivo está sendo aberto em modo leitura somente. 
-                                esta função nao lê o conteudo do arquivo, abre o arquivo
-                            </pre>
-                            <hr/>
-                                <p>
-                                sintaxe da função open- modo leitura: 
-                            </p>
-                            <pre>
-                                arquivo = open("nomeDoArquivo.txt", "r")
-                                onde nomeDoArquivo.txt é o nome do arquivo que esta sendo aberto 
-                                e "w" indica que o arquivo está sendo aberto em modo escrita. 
-                                
-                            </pre>
-                            <hr/>
-                            <h5> lendo os dados do arquivo </h5>
-                            <ol>
-                                <li>Funçao <em>read</em></li>
-                                <li> função read() le dados como string</li>
-                                <li>função readlines()le dados como lista</li>   
+                        %s
+                    </div>""" %(htmlConteudoTrilhaDePython)
+        return self.montarPagina()
 
-                            </ol>
-                            <p> sintaxe da função <em>read</em></p>
-                            <pre>
-                                conteudo lido com a função read: %s 
-                            </pre>
-                            
-                        </div>
-
-                    </div>
-                </div>
-            </body>
-        </html>""" %(htmlNomeDaTrilha, htmlMenuDeNavegacao,strConteudoDoArquivo)
-
-    def lerArquivo_read(self):
+    def lerArquivo_read(self,sNomeDoARquivo):
         strConteudo = ""
-        arquivo = open("arquivos/teste_teste.txt", "r") 
+        arquivo = open(sNomeDoARquivo, "r") 
         strConteudo = arquivo.read() #vai ler o que tem no arquivo e armazenar na variavel
         arquivo.close()#vai fechar o arquivo
 
@@ -154,8 +76,33 @@ class AppWeb: #object não é um parametro.
 
     @cherrypy.expose
     def trilhaDeHtml(self):
-        return """%(htmlNomeDaTrilha, htmlMenuDeNavegacao
-        """
+        strTrilhaDehtml = self.lerArquivo_read("arquivos/trilha_de_html.txt")
+        # html = markdown.markdown(your_text_string)
+        htmlConteudoTrilhahtml = markdown.markdown(strTrilhaDehtml)
+        self.htmlMenuDeNavegacao = self.menuDeNavegacao()
+        self.htmlConteudo = "<p>conteúdo</p>"
+        self.sTituloDaPagina = "Curso De Python - Trilha De HTML"
+        self.htmlConteudo = """
+                    <div id="divTrilhaDePython"> 
+                        %s
+                    </div>""" %(htmlConteudoTrilhahtml )
+
+        return self.montarPagina()
+    @cherrypy.expose
+    def linksExternos(self):
+        strlinksExternos = self.lerArquivo_read("arquivos/links_externos.txt")
+        # html = markdown.markdown(your_text_string)
+        htmlConteudolinksExternos = markdown.markdown(strlinksExternos)
+        self.htmlMenuDeNavegacao = self.menuDeNavegacao()
+        self.htmlConteudo = "<p>conteúdo</p>"
+        self.sTituloDaPagina = "Curso De Python - links externos"
+        self.htmlConteudo = """
+                    <div id="divlinks externos"> 
+                        %s
+                    </div>""" %(htmlConteudolinksExternos )
+
+        return self.montarPagina()
+
 #para diferenciar um elemento do outro , você pode pensar nas tags como objetos. 
 # se é um objeto tem atributos e metodos. no caso do html tem propriedades
 #todo objeto html tem um ID que usa para identificar o elemento dentro da pagina
@@ -174,7 +121,7 @@ class AppWeb: #object não é um parametro.
                         
                         }
                     div{
-                        backgound-color:lightblue;
+                        background-color:lightblue;
                     }
                     #divformLogin{
                         backgound-color: rgb(200, 255, 200);
@@ -260,9 +207,134 @@ class AppWeb: #object não é um parametro.
                     "target" : "",
                     "text": "Trilhas de HTML",
 
-                }
+                },
+                {
+                    "id": "linkLinkExterno",
+                    "href" : "linksExternos",
+                    "target" : "_blank",
+                    "text": "links de referencia"
+                    
+                    
+                    
+               }
 
         ]
+
+
+    def montarCabecalhoDePagina(self):
+        return """
+                    <!DOCTYPE html>
+                            <html>
+                                <head>
+                                    <title>Python 12762</title>
+                                    <style>
+                                        body{
+                                            width: 100%;
+                                            height: 100%;
+
+                                        }
+                                        #divPrincipal{
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                            display: flex;
+                                            flex-direction: column;
+                                        }
+
+                                        header, footer{
+                                            background-color: rgba(50, 50, 100, 0.7);
+                                            padding: 10px;
+                                        
+                                        }
+
+                                        header{
+                                            text-align: center;
+
+                                        }
+                                        main{
+                                            background-color: rgba(50, 50, 100, 0.9);
+                                            flex-grow: 1;
+                                            flex-shrink: 1;
+                                            flex-basis: auto;
+                                            
+                                            display: flex;
+                                            flex-direction: row;
+
+                                            padding: 10px;
+
+                                        }
+                                        #divOpcoes{
+                                            height: calc(100% - 20px);
+                                            width: 15%;
+                                            backgound-color: rgba(50, 100, 50, 0.9);
+                                            padding: 10px;
+                                         }
+                                        #divConteudo{
+                                            height: calc(100% - 20px);
+                                            background-color: rgba(50, 50, 100, 0.8);
+                                            padding: 10px;
+
+                                            flex-grow: 1;
+                                            flex-shrink: 1;
+                                            flex-basis: auto;
+                                            padding: 10px;
+                                            
+                                         }
+                                         #divOpcoes{
+                                            height: calc(100% - 20px);
+                                            width: 15%;
+                                            backgound-color: rgba(250, 100, 50, 0.9);
+                                            padding: 10px;}
+                                        #divMenuDeNavegacao{
+                                            backgound-color: rgb(200,255,200);
+                                        }
+                                        
+                                    </style>
+                                </head>
+                                
+                                    """
+
+    def montarCorpoDePagina(self):
+
+        return  """             <body>
+                                     <div id="divPrincipal">
+                                        <header>
+                                            <h2>%s</h2>
+                                    
+                                        </header>
+                                        <main>
+                                            <div id="divOpcoes"> 
+                                                <p> 
+                                                   %s
+                                                </p>
+                                            </div>
+                                            <div id="divConteudo"> 
+                                                <p>
+                                                    %s
+                                                </p>
+                                            </div>
+                                
+                                        </main>
+                                        <footer>
+                                            <p> Rodapé </p>
+                                        </footer>
+                                     </div>
+                                </body>
+            
+                """ % (self.sTituloDaPagina, self.htmlMenuDeNavegacao, self.htmlConteudo)
+            
+    def montarRodapeDePagina(self):
+        return """             
+                        </html>       
+        
+                 """            
+    
+    
+        
+
+
 
     #quando chamo uma pagina dentro do meu servidor nao preciso colocar o dominio so o nome da pag
 

@@ -1,0 +1,6 @@
+## links externos
+1. [markdown guide](https://www.markdownguide.org/)
+2. [markdown cheat sheer](https://www.markdownguide.org/cheat-sheet/)
+3. [markdown reference syntax](https://www.markdownguide.org/cheat-sheet/#basic-syntax)
+4. [html reference](https://www.w3schools.com/tags/default.asp)
+5. [python reference](https://www.w3schools.com/python/python_reference.asp)
