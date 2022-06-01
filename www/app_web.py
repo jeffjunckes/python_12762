@@ -33,6 +33,65 @@ class AppWeb: #object não é um parametro.
         
         
         """% (htmlCabecalhoDePagina, htmlCorpoDePagina, htmlRodapeDePagina)
+    
+    @cherrypy.expose
+    def paginaDeTestes(self,teste = "0", valor = "0"):
+        sTeste = teste
+        sValor = valor
+        if(sTeste != "0"):
+            resTeste = ""
+
+            if(sTeste == "1"):
+                #teste da função lerArquivo_readlines
+                lstConteudoArquivo = self.lerArquivo_readlines("arquivos/teste_teste.txt")
+                resTeste = "{}".format(lstConteudoArquivo)
+            elif(sTeste == "2"):
+                #teste <proximo assunto>
+                resTeste = "teste %s"%(sTeste)
+            else:
+                resTeste = "teste %s invalido "%sTeste
+
+            htmlConteudoPaginaDeTeste = """
+            <style>
+                #divPaginaDeTestes{
+                color: rgb(255,255,0)
+            
+                }
+            </style>
+            <div id="divPaginaDeTestes">
+                %s
+            </div>
+            
+            """% resTeste
+            
+            
+        else:
+            htmlConteudoPaginaDeTeste = """
+            <style>
+                #divPaginaDeTestes{
+                color: rgb(255,255,0)
+                font-size: 160px
+            
+                }
+            </style>
+            <div id="divPaginaDeTestes">
+                <form action="paginaDeTestes"><!--define para onde vai enviar dados-->
+                    <label> Escolha um teste</label><br/>
+                    <select id="selTeste" name="teste">
+                        <option value="1">Teste de arquivo (readlines)</option>
+                        <option value="2">Teste 2 (readlines)</option>
+                    </select><br/>
+                    <input type="submit" value="executar"/>
+                </form>
+            </div>
+            
+            """
+        self.htmlMenuDeNavegacao = self.menuDeNavegacao()
+        self.sTituloDaPagina = "Curso De Python - 12762"
+        self.htmlConteudo = """<div>
+                                %s
+                            </div>"""%(htmlConteudoPaginaDeTeste)
+        return self.montarPagina()
 
     @cherrypy.expose
     def trilhasDeConhecimento(self):
@@ -67,11 +126,15 @@ class AppWeb: #object não é um parametro.
         return strConteudo
 
 
-    def lerArquivo_readlines(self):
-        lstConteudo = ""
-
-
+    def lerArquivo_readlines(self,sNomeDoArquivo):
+        lstConteudo = []
+        arquivo = open(sNomeDoArquivo,"r")
+        lstConteudo = arquivo.readlines()
+        arquivo.close()
         return lstConteudo
+
+
+        
 
 
     @cherrypy.expose
@@ -112,6 +175,7 @@ class AppWeb: #object não é um parametro.
         return  """"<!DOCTYPE html>
         <html>
             <head>
+                <meta charset="utf-8">
                 <title>Python 12762</title>
                 <style>
                     p{
@@ -124,7 +188,7 @@ class AppWeb: #object não é um parametro.
                         background-color:lightblue;
                     }
                     #divformLogin{
-                        backgound-color: rgb(200, 255, 200);
+                        backgound-color: rgb(0, 0, 200);
                     }
                 </style>
             </head>
@@ -211,12 +275,22 @@ class AppWeb: #object não é um parametro.
                 {
                     "id": "linkLinkExterno",
                     "href" : "linksExternos",
-                    "target" : "_blank",
+                    "target" : "",
                     "text": "links de referencia"
                     
                     
                     
+               },
+                {
+                    "id": "linkPaginaDeTeste",
+                    "href" : "paginaDeTestes",
+                    "target" : "",
+                    "text": "Pagina De Testes"
+                    
+                    
+                    
                }
+
 
         ]
 
@@ -227,6 +301,7 @@ class AppWeb: #object não é um parametro.
                             <html>
                                 <head>
                                     <title>Python 12762</title>
+                                    <meta charset="utf-8">
                                     <style>
                                         body{
                                             width: 100%;
