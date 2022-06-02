@@ -1,0 +1,45 @@
+<div id="divArquivosEmPython">
+    <h5>Abrindo um arquivo</h5>
+    <ol>
+        <li>A função OPEN é utilizado para realizar operações com arquivos em Python.</li>
+        <li>Um arquivo pode ser aberto para leitura (read), escrita (write) ou acrescentar (append) conteúdo.</li>
+        <li>Após utilizado, um arquivo sempre deve ser fechado.</li>
+    </ol>
+    <p>Sintaxe da função open - modo leitura:</p>
+    <pre>
+        arquivo = open("nomeDoArquivo.txt", "r")
+
+        onde "nomeDoArquivo.txt" é o nome do arquivo que está sendo aberto
+        e "r" indica que o arquivo está sendo aberto em modo de leitura somente.
+
+        Esta função não lê o conteudo. Apenas abre o arquivo.
+    </pre>
+    <hr />
+    <p>Sintaxe da função open - modo escrita (gravação):</p>
+    <pre>
+        arquivo = open("nomeDoArquivo.txt", "w")
+
+        onde "nomeDoArquivo.txt" é o nome do arquivo que está sendo aberto
+        e "w" indica que o arquivo está sendo aberto em modo de escrita somente.
+
+        Esta função não grava dados no arquivo. Apenas abre o arquivo.
+    </pre>
+    <hr />
+    <h5>Lendo os dados do arquivo</h5>
+    <ol>
+        <li>Função <em>read</em> lê os dados como <em>string</em></li>
+        <li>Função <em>readlines</em> lê os dados como <em>list</em></li>
+    </ol>
+    <p>Sintaxe da função <em>read</em>:</p>
+    <pre>
+        strConteudo = arquivo.read()
+    </pre>
+    <p>Sintaxe da função <em>readlines</em>:</p>
+    <pre>
+        lstConteudo = arquivo.readlines()
+    </pre>
+    <p>Conteúdo lido com a função <em>read</em>:</p>
+    <pre>
+%s
+    </pre>
+</div>
